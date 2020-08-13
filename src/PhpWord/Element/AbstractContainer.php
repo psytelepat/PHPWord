@@ -113,6 +113,8 @@ abstract class AbstractContainer extends AbstractElement
                     return call_user_func_array(array($this, 'addElement'), $args);
                 } catch (\PhpOffice\PhpWord\Exception\InvalidImageException $e) {
                     return null;
+                } catch (\PhpOffice\PhpWord\Exception\UnsupportedImageTypeException $e) {
+                    return null;
                 }
             }
         }
