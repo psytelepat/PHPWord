@@ -15,31 +15,28 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Writer\RTF\Element;
+namespace PhpOffice\PhpWord\Writer\HTML\Element;
 
 /**
- * TextRun element RTF writer
+ * ListItem element HTML writer
  *
  * @since 0.10.0
  */
-class TextRun extends AbstractElement
+class ListItemRun extends TextRun
 {
     /**
-     * Write element
+     * Write list item
      *
      * @return string
      */
     public function write()
     {
-        $writer = new Container($this->parentWriter, $this->element);
-        $this->getStyles();
+        if (!$this->element instanceof \PhpOffice\PhpWord\Element\ListItemRun) {
+            return '';
+        }
 
-        $content = '';
-        $content .= $this->writeOpening();
-        $content .= '{';
-        $content .= $writer->write();
-        $content .= '}';
-        $content .= $this->writeClosing();
+        $writer = new Container($this->parentWriter, $this->element);
+        $content = $writer->write() . PHP_EOL;
 
         return $content;
     }
