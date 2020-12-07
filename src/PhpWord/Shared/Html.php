@@ -361,7 +361,7 @@ class Html
         if (!empty($colspan)) {
             $cellStyles['gridSpan'] = $colspan - 0;
         }
-        $cell = $element->addCell(null, $cellStyles);
+        $cell = $element->addCell(4000, $cellStyles);
 
         if (self::shouldAddTextRun($node)) {
             return $cell->addTextRun(self::parseInlineStyle($node, $styles['paragraph']));
